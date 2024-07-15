@@ -1,0 +1,28 @@
+name: Deploy Flask App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy to Azure VM
+      run: |
+        ssh shaheer_1719297695660@npedureka.onmicrosoft.com@48.217.82.36 << 'EOF'
+        cd /home/shaheer_1719297695660@npedureka.onmicrosoft.com/flask-hello-world
+        git pull
+        sudo systemctl restart flaskapp
+        EOF
