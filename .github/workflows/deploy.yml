@@ -20,8 +20,8 @@ jobs:
 
     - name: Deploy to Azure VM
       run: |
-        ssh shaheer_1719297695660@npedureka.onmicrosoft.com@48.217.144.189<< 'EOF'
-        cd /home/shaheer_1719297695660@npedureka.onmicrosoft.com/flask-hello-world
+        ssh shaheer_1719297695660@npedureka.onmicrosoft.com@40.90.235.236 << 'EOF'
+        cd /home/Arpit1a/flask-hello-world
         git pull
         sudo systemctl restart flaskapp
         EOF
